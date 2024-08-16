@@ -16,35 +16,35 @@ with open(r"D:\ai-pro\project\response.json", 'r') as file:
 #Create a form using st.form
 with st.form("user_inputs"):
     #File Upload
-    uploaded_file= st.file_uploader("Update a PDF or txt file")
+    file= st.file_uploader("Update a PDF or txt file")
     
     #Input Fields
-    mcq_count= st.number_input("No. of MCQs", min_value=3, max_value=50)
+    Number_of_MCQ= st.number_input("No. of MCQs", min_value=3, max_value=50)
     
     #Subject
-    subject= st.text_input("Insert Subject", max_chars=20)
+    Topic= st.text_input("Insert Subject", max_chars=20)
     
     #Quiz tone
-    tone = st.text_input("Complexity Level of Questions", max_chars=20, placeholder="Simple")
+    Difficulty = st.text_input("Complexity Level of Questions", max_chars=20, placeholder="Simple")
     
     #Add Button
-    button= st.form_submit_button("Create MCQs")
+    submit_button= st.form_submit_button("Create MCQs")
     
     #Check if the button is Clicked and all fields have input
     
-    if button and uploaded_file is not None and mcq_count and subject and tone:
+    if submit_button and file is not None and Number_of_MCQ and Topic and Difficulty:
         with st.spinner("loading..."):
             try:
-                text= read_file(uploaded_file)
+                text= read_file(file)
                 
                 #Count tokens and cost of API call
                 with get_openai_callback() as cb:
                     response= generate_evaluate_chain(
                         {
                             "text": text,
-                            "number": mcq_count,
-                            "subject": subject,
-                            "tone": tone,
+                            "number": Number_of_MCQ,
+                            "subject": Topic,
+                            "tone": Difficulty,
                             "response_json": json.dumps(RESPONSE_JSON)
                         }
                     )
