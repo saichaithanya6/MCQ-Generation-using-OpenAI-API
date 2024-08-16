@@ -14,10 +14,10 @@ from langchain.chains import SequentialChain
 #load environment variables from .env file
 load_dotenv()
 
-key= os.getenv("OPENAI_API_KEY")
+key_in_env= os.getenv("OPENAI_API_KEY")
 
 #Creating llm model of gpt 3.5 in to the system
-llm= ChatOpenAI(openai_api_key= key, model_name= 'gpt-3.5-turbo', temperature= 0.5)
+llm= ChatOpenAI(openai_api_key= key_in_env, model_name= 'gpt-3.5-turbo', temperature= 0.5)
 
 #Template given to the model
 TEMPLATE="""
