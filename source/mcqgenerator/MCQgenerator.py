@@ -17,7 +17,7 @@ load_dotenv()
 key_in_env= os.getenv("OPENAI_API_KEY")
 
 #Creating llm model of gpt 3.5 in to the system
-llm= ChatOpenAI(openai_api_key= key_in_env, model_name= 'gpt-3.5-turbo', temperature= 0.5)
+llm_model= ChatOpenAI(openai_api_key= key_in_env, model_name= 'gpt-3.5-turbo', temperature= 0.5)
 
 #Template given to the model
 TEMPLATE="""
@@ -40,7 +40,7 @@ quiz_generation_prompt= PromptTemplate(
 )
 
 
-quiz_chain= LLMChain(llm= llm, prompt= quiz_generation_prompt, output_key="quiz", verbose= True)
+quiz_chain= LLMChain(llm= llm_model, prompt= quiz_generation_prompt, output_key="quiz", verbose= True)
 
 #Template to get complete analysis of the quiz
 TEMPLATE2="""
@@ -59,7 +59,7 @@ quiz_evaluation_prompt= PromptTemplate(input_variables=['subject', 'quiz'], temp
 
 
 #Creating LLM chain component for quiz evaluation
-review_chain= LLMChain(llm=llm, prompt= quiz_evaluation_prompt, output_key= "review", verbose= True)
+review_chain= LLMChain(llm=llm_model, prompt= quiz_evaluation_prompt, output_key= "review", verbose= True)
 
 
 #Combining both quiz chain and review chain using sequential chain function
