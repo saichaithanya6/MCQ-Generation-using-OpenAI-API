@@ -2,11 +2,11 @@
 
 The project's goal is to automate the generation of multiple-choice questions using OpenAI's GPT-3.5 Turbo model based on a given input of text.
 
-Here is the detailed step-by-step process done to create the project:
+Here is the detailed step-by-step process done to create the project for MCQ generation with AI:
 
 ### Downloading Packages and Environments:
-* Created this project in VS code to test locally in the computer.
-* Created python environment, packages and API keys in the the environment. Connected VSCode to Git HUb to sync the code changes done the environment.
+* Created this project in VS-code to test locally in the computer.
+* Created an python environment with packages and API keys in the the environment. Connected VSCode to Git HUb to sync the code changes done the environment.
 
 ### Experimenting with the Code:
 * Developed code to load the model from the OpenAI API:
